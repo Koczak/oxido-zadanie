@@ -7,14 +7,15 @@ const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 });
 
-const getResponse = async (content) => {
+const getResponse = async (systemMessage, userContent) => {
 	try {
 		const completion = await openai.chat.completions.create({
 			model: "gpt-4o",
 			messages: [
+				{ role: "system", content: systemMessage },
 				{
 					role: "user",
-					content: content,
+					content: userContent,
 				},
 			],
 		});
@@ -36,7 +37,9 @@ const fetchArticle = async () => {
 };
 
 const createPrompt = (articleContent) => {
-	return `
+	const systemMessage =
+		"You are a helpful assistant and an expert in HTML content creation.";
+	const prompt = `
 	You are a helpful assistant and an expert in HTML content creation.
 	Your task is to convert the following article into structured HTML content.
 	Please use appropriate HTML tags to structure the content.
@@ -56,13 +59,14 @@ const createPrompt = (articleContent) => {
 	Here is the article:
 	${articleContent}
 	`;
+	return { systemMessage, prompt };
 };
 
 const main = async () => {
 	const articleContent = await fetchArticle();
 	if (articleContent) {
-		const prompt = createPrompt(articleContent);
-		const response = await getResponse(prompt);
+		const { systemMessage, prompt } = createPrompt(articleContent);
+		const response = await getResponse(systemMessage, prompt);
 		if (response) {
 			const cleanedResponse = response.replace(/```html|```/g, "").trim();
 			try {
