@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Szablon Artykułu</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--primary-color: #2d3436;
+				--secondary-color: #636e72;
+				--accent-color: #00b894;
+				--background-color: #f8f9fa;
+				--container-background: #ffffff;
+				--code-background: #f8f9fb;
+			}
+
+			body {
+				font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: var(--background-color);
+				color: var(--primary-color);
+				line-height: 1.6;
+			}
+
+			.container {
+				max-width: 800px;
+				margin: 120px auto 60px;
+				padding: 40px;
+				background-color: var(--container-background);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+				border-radius: 16px;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: var(--primary-color);
+				line-height: 1.2;
+				margin-top: 2em;
+				margin-bottom: 0.5em;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+			}
+			h2 {
+				font-size: 2rem;
+			}
+			h3 {
+				font-size: 1.75rem;
+			}
+			h4 {
+				font-size: 1.5rem;
+			}
+			h5 {
+				font-size: 1.25rem;
+			}
+			h6 {
+				font-size: 1rem;
+			}
+
+			p {
+				margin-bottom: 1.5rem;
+				line-height: 1.8;
+				color: var(--secondary-color);
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				margin: 2rem auto;
+				border-radius: 12px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease;
+			}
+
+			img:hover {
+				transform: scale(1.02);
+			}
+
+			pre,
+			code {
+				background-color: var(--code-background);
+				border-radius: 8px;
+				padding: 1rem;
+				overflow-x: auto;
+				font-family: "Consolas", "Monaco", monospace;
+				font-size: 0.9rem;
+			}
+
+			blockquote {
+				border-left: 4px solid var(--accent-color);
+				margin: 1.5rem 0;
+				padding: 1rem 1.5rem;
+				background-color: var(--background-color);
+				border-radius: 0 8px 8px 0;
+			}
+
+			ul,
+			ol {
+				padding-left: 2rem;
+				margin-bottom: 1.5rem;
+				color: var(--secondary-color);
+			}
+
+			li {
+				margin-bottom: 0.5rem;
+			}
+
+			a {
+				color: var(--accent-color);
+				text-decoration: none;
+				transition: color 0.3s ease;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			hr {
+				border: none;
+				height: 1px;
+				background-color: var(--secondary-color);
+				opacity: 0.2;
+				margin: 2rem 0;
+			}
+			figcaption {
+				text-align: center;
+				font-size: 0.9rem;
+				color: var(--secondary-color);
+				margin-top: 10px;
+			}
+
+			footer {
+				text-align: center;
+				font-size: 0.9rem;
+				color: var(--secondary-color);
+				margin-top: 40px;
+				padding: 20px;
+			}
+
+			@media (max-width: 768px) {
+				.container {
+					margin: 20px;
+					padding: 20px;
+				}
+
+				h1 {
+					font-size: 2rem;
+				}
+				h2 {
+					font-size: 1.75rem;
+				}
+				h3 {
+					font-size: 1.5rem;
+				}
+				h4 {
+					font-size: 1.25rem;
+				}
+				h5 {
+					font-size: 1.1rem;
+				}
+				h6 {
+					font-size: 1rem;
+				}
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--primary-color: #e9ecef;
+					--secondary-color: #ced4da;
+					--accent-color: #00d1a1;
+					--background-color: #1a1a1a;
+					--container-background: #2d2d2d;
+					--code-background: #363636;
+				}
+			}
+
+			.navbar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background-color: var(--container-background);
+				padding: 1rem 2rem;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+				z-index: 1000;
+			}
+
+			.nav-content {
+				max-width: 1200px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.nav-logo {
+				font-weight: 700;
+				font-size: 1.5rem;
+				color: var(--primary-color);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 2rem;
+			}
+
+			.nav-links a {
+				color: var(--secondary-color);
+				font-weight: 500;
+				transition: color 0.3s ease;
+			}
+
+			.nav-links a:hover {
+				color: var(--accent-color);
+				text-decoration: none;
+			}
+
+			.container {
+				margin: 120px auto 60px;
+			}
+
+			@media (max-width: 768px) {
+				.nav-links {
+					gap: 1rem;
+				}
+
+				.navbar {
+					padding: 1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="nav-content">
+				<div class="nav-logo">Logo</div>
+				<div class="nav-links">
+					<a href="#">Strona główna</a>
+					<a href="#">O nas</a>
+					<a href="#">Artykuły</a>
+					<a href="#">Kontakt</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<!-- Miejsce na artykuł -->
+		</div>
+		<footer>&copy; 2024 XYZ</footer>
+	</body>
+</html>

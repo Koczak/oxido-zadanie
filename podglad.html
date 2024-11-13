@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Podgląd Artykułu</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--primary-color: #2d3436;
+				--secondary-color: #636e72;
+				--accent-color: #00b894;
+				--background-color: #f8f9fa;
+				--container-background: #ffffff;
+				--code-background: #f8f9fb;
+			}
+
+			body {
+				font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: var(--background-color);
+				color: var(--primary-color);
+				line-height: 1.6;
+			}
+
+			.container {
+				max-width: 800px;
+				margin: 120px auto 60px;
+				padding: 40px;
+				background-color: var(--container-background);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+				border-radius: 16px;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: var(--primary-color);
+				line-height: 1.2;
+				margin-top: 2em;
+				margin-bottom: 0.5em;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+			}
+			h2 {
+				font-size: 2rem;
+			}
+			h3 {
+				font-size: 1.75rem;
+			}
+			h4 {
+				font-size: 1.5rem;
+			}
+			h5 {
+				font-size: 1.25rem;
+			}
+			h6 {
+				font-size: 1rem;
+			}
+
+			p {
+				margin-bottom: 1.5rem;
+				line-height: 1.8;
+				color: var(--secondary-color);
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				margin: 2rem auto;
+				border-radius: 12px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease;
+			}
+
+			img:hover {
+				transform: scale(1.02);
+			}
+
+			pre,
+			code {
+				background-color: var(--code-background);
+				border-radius: 8px;
+				padding: 1rem;
+				overflow-x: auto;
+				font-family: "Consolas", "Monaco", monospace;
+				font-size: 0.9rem;
+			}
+
+			blockquote {
+				border-left: 4px solid var(--accent-color);
+				margin: 1.5rem 0;
+				padding: 1rem 1.5rem;
+				background-color: var(--background-color);
+				border-radius: 0 8px 8px 0;
+			}
+
+			ul,
+			ol {
+				padding-left: 2rem;
+				margin-bottom: 1.5rem;
+				color: var(--secondary-color);
+			}
+
+			li {
+				margin-bottom: 0.5rem;
+			}
+
+			a {
+				color: var(--accent-color);
+				text-decoration: none;
+				transition: color 0.3s ease;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			hr {
+				border: none;
+				height: 1px;
+				background-color: var(--secondary-color);
+				opacity: 0.2;
+				margin: 2rem 0;
+			}
+			figcaption {
+				text-align: center;
+				font-size: 0.9rem;
+				color: var(--secondary-color);
+				margin-top: 10px;
+			}
+
+			footer {
+				text-align: center;
+				font-size: 0.9rem;
+				color: var(--secondary-color);
+				margin-top: 40px;
+				padding: 20px;
+			}
+
+			@media (max-width: 768px) {
+				.container {
+					margin: 20px;
+					padding: 20px;
+				}
+
+				h1 {
+					font-size: 2rem;
+				}
+				h2 {
+					font-size: 1.75rem;
+				}
+				h3 {
+					font-size: 1.5rem;
+				}
+				h4 {
+					font-size: 1.25rem;
+				}
+				h5 {
+					font-size: 1.1rem;
+				}
+				h6 {
+					font-size: 1rem;
+				}
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--primary-color: #e9ecef;
+					--secondary-color: #ced4da;
+					--accent-color: #00d1a1;
+					--background-color: #1a1a1a;
+					--container-background: #2d2d2d;
+					--code-background: #363636;
+				}
+			}
+
+			.navbar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background-color: var(--container-background);
+				padding: 1rem 2rem;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+				z-index: 1000;
+			}
+
+			.nav-content {
+				max-width: 1200px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.nav-logo {
+				font-weight: 700;
+				font-size: 1.5rem;
+				color: var(--primary-color);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 2rem;
+			}
+
+			.nav-links a {
+				color: var(--secondary-color);
+				font-weight: 500;
+				transition: color 0.3s ease;
+			}
+
+			.nav-links a:hover {
+				color: var(--accent-color);
+				text-decoration: none;
+			}
+
+			.container {
+				margin: 120px auto 60px;
+			}
+
+			@media (max-width: 768px) {
+				.nav-links {
+					gap: 1rem;
+				}
+
+				.navbar {
+					padding: 1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="nav-content">
+				<div class="nav-logo">Logo</div>
+				<div class="nav-links">
+					<a href="#">Strona główna</a>
+					<a href="#">O nas</a>
+					<a href="#">Artykuły</a>
+					<a href="#">Kontakt</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<article>
+				<h1>Sztuczna inteligencja: wpływ i wyzwania</h1>
+				<p>
+					Sztuczna inteligencja to dziedzina nauki i technologii zajmująca się
+					tworzeniem maszyn i programów zdolnych do wykonywania zadań
+					wymagających ludzkiej inteligencji, takich jak uczenie się, rozumienie
+					języka naturalnego i podejmowanie decyzji. AI stała się integralną
+					częścią naszego codziennego życia, od asystentów głosowych w
+					smartfonach, jak Siri czy Google Assistant, po systemy rekomendacyjne
+					na platformach streamingowych, takich jak Netflix czy Spotify. Wspiera
+					nas w planowaniu tras, automatyzacji domowych urządzeń oraz w
+					komunikacji. Obecnie jest o niej bardzo głośno chociażby za sprawą
+					dużych modeli językowych, jak ChatGPT.
+				</p>
+				<img
+					src="image_placeholder.jpg"
+					alt="Representation of AI in various devices and its integration into everyday life"
+				/>
+				<figcaption>
+					AI as a part of everyday life through devices and applications.
+				</figcaption>
+
+				<h2>Rozwój uczenia maszynowego i głębokiego uczenia</h2>
+				<p>
+					Rozwój uczenia maszynowego i głębokiego uczenia umożliwił tworzenie
+					zaawansowanych modeli, które potrafią samodzielnie rozwiązywać
+					skomplikowane problemy. Sieci neuronowe analizują ogromne ilości
+					danych w obszarach takich jak rozpoznawanie obrazów czy przetwarzanie
+					języka naturalnego. Dzięki temu AI nie tylko przetwarza dane, ale
+					także podejmuje decyzje, wcześniej zarezerwowane dla ludzi.
+				</p>
+				<img
+					src="image_placeholder.jpg"
+					alt="Illustration of machine learning processing data"
+				/>
+				<figcaption>
+					Machine learning algorithms processing large datasets.
+				</figcaption>
+
+				<h2>Wyzwania etyczne i społeczne</h2>
+				<p>
+					Kluczowym wyzwaniem jest zapewnienie etycznego i odpowiedzialnego
+					rozwoju AI. Należy zwracać uwagę na uprzedzenia w danych treningowych,
+					które mogą prowadzić do dyskryminacji, oraz na wpływ AI na prywatność
+					i nierówności społeczne. Ważne jest opracowanie ram etycznych i
+					mechanizmów nadzoru regulujących rozwój i wdrażanie AI, a także
+					włączanie różnych grup społecznych w ten proces. Transparentność
+					działań firm i instytucji może pomóc w budowaniu zaufania do
+					technologii.
+				</p>
+				<p>
+					Badacze pracują nad rozwiązaniami umożliwiającymi harmonijne
+					współistnienie ludzi i AI, koncentrując się na tworzeniu systemów
+					wspierających człowieka, a nie go zastępujących. Istotne jest
+					opracowywanie mechanizmów współpracy między człowiekiem a maszyną, co
+					sprzyja synergii i skutecznej komunikacji.
+				</p>
+				<img
+					src="image_placeholder.jpg"
+					alt="Visual depiction of human-AI collaboration and ethical considerations"
+				/>
+				<figcaption>
+					Exploring ethical AI and human-AI collaboration.
+				</figcaption>
+
+				<h2>Automatyzacja i przyszłość rynku pracy</h2>
+				<p>
+					Automatyzacja procesów dzięki AI przynosi korzyści w postaci
+					zwiększonej efektywności i redukcji kosztów. Jednak istnieją obawy
+					dotyczące wpływu na rynek pracy i potencjalnego zastąpienia ludzi
+					przez maszyny. Kluczowe jest przemyślane podejście do transformacji
+					rynku pracy, inwestycja w edukację i przekwalifikowanie pracowników,
+					aby mogli oni znaleźć nowe role w gospodarce przyszłości.
+				</p>
+				<p>
+					Specjaliści powinni być gotowi na ciągłe doskonalenie swoich
+					umiejętności, ucząc się m.in. zasad działania algorytmów AI.
+					Przyszłość pracy będzie wymagać nie tylko umiejętności technicznych,
+					ale także kompetencji miękkich, takich jak kreatywność i zdolność
+					rozwiązywania problemów.
+				</p>
+				<img
+					src="image_placeholder.jpg"
+					alt="Concept of AI-driven automation in the workplace"
+				/>
+				<figcaption>The impact of AI automation on the job market.</figcaption>
+
+				<p>
+					Nasza zdolność do adaptacji i innowacji zdecyduje o tym, jak AI
+					wpłynie na przyszłość ludzkości. Wspólnie możemy kształtować tę
+					przyszłość, wykorzystując AI dla dobra wszystkich.
+				</p>
+			</article>
+		</div>
+		<footer>&copy; 2024 XYZ</footer>
+	</body>
+</html>
