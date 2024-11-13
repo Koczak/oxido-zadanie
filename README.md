@@ -44,6 +44,4 @@ The application will fetch the article, convert it to HTML, and save it to `arty
 - Check your internet connection if the article fetching fails.
 - Verify that your OpenAI API key is valid and has sufficient permissions.
 
-## License
 
-This project is licensed under the MIT License.
